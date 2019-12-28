@@ -1,0 +1,5 @@
+# Web development framework.
+Flask==1.1.1
+
+# HTTP server.
+gunicorn==20.0.4
