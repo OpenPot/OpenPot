@@ -1,9 +1,32 @@
 version: '2'
 
 services:
+  database:
+    image: postgres:12.1-alpine
+    restart: always
+    env_file:
+      - '.env'
+    ports:
+      - '5432:5432'
+    volumes:
+      - 'postgres:/var/lib/postgresql/data'
+
+  adminer:
+    image: adminer:4.7
+    restart: always
+    ports:
+      - '8080:8080'
+
   website:
     build: .
+    env_file:
+      - '.env'
     ports:
       - '80:80'
     volumes:
       - '.:/app'
+    depends_on:
+      - database
+
+volumes:
+  postgres:

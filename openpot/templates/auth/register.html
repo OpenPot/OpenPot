@@ -4,15 +4,10 @@
 <h1>{% block title %}Register{% endblock %}</h1>
 
 <form method="POST">
-    <label for="username">Username</label>
-    <input name="username" id="username" required>
-
-    <label for="password">Password</label>
-    <input name="password" type="password" id="password" required>
-
-    <label for="email">Email</label>
-    <input name="email" id="email" required>
-
+    {{ form.csrf_token }}
+    {{ form.username.label }} {{ form.username(size=20) }}
+    {{ form.password.label }} {{ form.password(size=20) }}
+    {{ form.email.label }} {{ form.email(size=20) }}
     <input type="submit" value="Register">
 </form>
 {% endblock %}
